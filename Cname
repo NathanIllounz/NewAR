@@ -1,0 +1,4 @@
+Type: CNAME
+Name: www
+Value: username.github.io
+TTL: Automatic or 1 hour
