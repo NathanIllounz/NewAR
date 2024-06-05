@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Guess My Number!</title>
-  </head>
-  <body>
-    <header>
-      <h1>Guess My Number!</h1>
-      <p class="between">(Between 1 and 20)</p>
-      <button class="btn again">Again!</button>
-      <div class="number">?</div>
-    </header>
-    <main>
-      <section class="left">
-        <input type="number" class="guess" /><!--here we get the guess number-->
-        <button class="btn check">Check!</button>
-      </section>
-      <section class="right">
-        <p class="message">Start guessing...</p>
-        <p class="label-score">?? Score: <span class="score">20</span></p>
-        <p class="label-highscore">
-          ?? Highscore: <span class="highscore">0</span>
-        </p>
-      </section>
-    </main>
-    <script src="script.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera with Animated Character</title>
+    <style>
+        /* Add some basic styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        video, canvas {
+            position: absolute;
+        }
+        canvas {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        // Access the user's camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+            })
+            .catch(err => console.error("Error accessing camera: ", err));
+    </script>
+</body>
 </html>
+<script>
+    function setup() {
+        const canvas = createCanvas(windowWidth, windowHeight);
+        canvas.position(0, 0);
+        canvas.style('pointer-events', 'none');
+    }
+
+    function draw() {
+        clear();
+        // Draw your animated character here
+        // For example, draw a talking head
+        fill(255, 0, 0);
+        ellipse(width / 2, height / 2, 200, 200);
+        fill(255);
+        ellipse(width / 2 - 50, height / 2 - 50, 50, 50);
+        ellipse(width / 2 + 50, height / 2 - 50, 50, 50);
+        fill(0);
+        ellipse(width / 2 - 50, height / 2 - 50, 20, 20);
+        ellipse(width / 2 + 50, height / 2 - 50, 20, 20);
+        fill(255, 0, 0);
+        arc(width / 2, height / 2 + 30, 80, 80, 0, PI);
+    }
+</script>
+
+<script>
+    function speak(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+    }
+
+    // Call this function to make the character talk
+    speak("Hey, Reut ,    Hey   Mark , Hey        Itamar, hey Adar");
+    speak(" I am your animated character!");
+//   speak("Hello, I am your animated character!");
+//   speak("Hello, I am your animated character!");
+    speak("My name is Charli Chapline!");
+    speak("do you want to be my friend ?");
+</script>
