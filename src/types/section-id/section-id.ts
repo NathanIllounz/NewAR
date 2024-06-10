@@ -3,4 +3,5 @@ export const enum SectionIdEnum {
   about = 'about',
   createYourAvatar = 'createYourAvatar',
   login = 'login',
+  openCamera = 'openCamera',
 }

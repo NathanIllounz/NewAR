@@ -1,6 +1,6 @@
 import { MainLayout, SectionContainer } from 'components';
 import {
-  IntroSection, AboutSection, LoginSection, CreateAvatarSection,
+  IntroSection, AboutSection, LoginSection, CreateAvatarSection, OpenCameraSection,
 } from 'sections';
 import { SectionIdEnum } from 'types';
 
@@ -14,12 +14,16 @@ const sections = [
     component: <AboutSection />,
   },
   {
-    sectionId: SectionIdEnum.createYourAvatar,
-    component: <CreateAvatarSection />,
+    sectionId: SectionIdEnum.intro,
+    component: <LoginSection />,
   },
   {
-    sectionId: SectionIdEnum.login,
-    component: <LoginSection />,
+    sectionId: SectionIdEnum.openCamera,
+    component: <OpenCameraSection />,
+  },
+  {
+    sectionId: SectionIdEnum.createYourAvatar,
+    component: <CreateAvatarSection />,
   },
 ];
 

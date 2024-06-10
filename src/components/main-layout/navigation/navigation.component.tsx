@@ -25,6 +25,10 @@ const navigationItems = [
     text: 'Login',
     to: SectionIdEnum.login,
   },
+  {
+    text: 'OpenCamera',
+    to: SectionIdEnum.openCamera,
+  },
 ];
 
 const Transition = React.forwardRef((
